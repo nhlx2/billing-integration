@@ -39,6 +39,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+		  <groupId>org.awaitility</groupId>
+		  <artifactId>3.2.1</artifactId>
+		  <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
