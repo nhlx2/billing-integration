@@ -29,3 +29,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Emacs ###
+*~
+
+### Maven ##
+.mvn/
+mvnw
+mvnw.cmd
