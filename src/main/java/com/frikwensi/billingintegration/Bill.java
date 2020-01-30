@@ -25,17 +25,20 @@ public class Bill {
     public Bill() {
     }
     
-    public Bill(String transactionReference, String clientSwiftAddress, String messageStatus, String currency, int amount) {
+    public Bill(String transactionReference, String clientSwiftAddress,
+		String messageStatus, String currency, int amount,
+		Date dateTimeCreated) {
 	this.transactionReference = transactionReference;
 	this.clientSwiftAddress = clientSwiftAddress;
 	this.messageStatus = messageStatus;
 	this.currency = currency;
 	this.amount = amount;
+	this.dateTimeCreated = dateTimeCreated;
     }
 
     @Override
     public String toString() {
-	return "Bill{" + "id=" + id + ", transactionReference='" + transactionReference + '\'' + ", clientSwiftAddress='" + clientSwiftAddress + '\''  + '}';
+	return "Bill{" + "id=" + id + ", transactionReference='" + transactionReference + '\'' + ", dateTimeCreated='" + dateTimeCreated + '\''  + '}';
     }
 
     
