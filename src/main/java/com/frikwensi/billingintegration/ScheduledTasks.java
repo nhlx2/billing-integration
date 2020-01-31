@@ -2,6 +2,8 @@ package com.frikwensi.billingintegration;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
+import java.util.stream.StreamSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +30,14 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 10000)
     public void writeBillingFile() {
+	Date currentDate = new Date();
+	Calendar c = Calendar.getInstance();
+	c.setTime(currentDate);
+	c.add(Calendar.MONTH, -1);
 	usages.save(new Usage(new Date()));
 	System.out.println("\nfindAll()");
-	billings.findAll().forEach(x -> System.out.println(x +  String.valueOf(usages.count())));
+	billings.findAll().
+	    forEach(x -> System.out.println(x + String.valueOf(StreamSupport.stream(usages.findAll().spliterator(), false).filter(d -> d.getDate().after(c.getTime())).count())));
     }
 }
 
