@@ -8,6 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 @Entity
 public class Bill {
@@ -21,7 +22,8 @@ public class Bill {
     private int amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeCreated;
-
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMDD");
+    
     public Bill() {
     }
     
@@ -38,7 +40,7 @@ public class Bill {
 
     @Override
     public String toString() {
-	return "Bill{" + "id=" + id + ", transactionReference='" + transactionReference + '\'' + ", dateTimeCreated='" + dateTimeCreated + '\''  + '}';
+	return String.format("%s%s%s%s%s", clientSwiftAddress, transactionReference, "INTEGRATEDSERVICES", currency, dateFormat.format(dateTimeCreated));
     }
 
     
