@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
 public class ScheduledTasks {
-    private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMDD");
     
@@ -23,10 +22,6 @@ public class ScheduledTasks {
     @Autowired
     private UsageRepository usages;
 
-    @Scheduled(fixedRate = 5000)
-    public void reportCurrentTime() {
-	log.info("The time is now {}", timeFormat.format(new Date()));
-    }
 
     @Scheduled(fixedRate = 10000)
     public void writeBillingFile() {
